@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visualiseur de Données Excel</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://pyscript.net/releases/2025.3.1/core.css"
+    />
+    <script
+      type="module"
+      src="https://pyscript.net/releases/2025.3.1/core.js"
+    ></script>
+    <py-config>
+      packages = ["matplotlib", "pandas", "openpyxl", "xlrd"]
+    </py-config>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Visualiseur de Données Excel</h1>
+
+      <div class="upload-section">
+        <h2>Télécharger un Fichier Excel</h2>
+        <input type="file" id="excel-file" accept=".xlsx, .xls" />
+        <div id="file-info">Aucun fichier sélectionné</div>
+      </div>
+
+      <div class="chart-options">
+        <h2>Type de Graphique</h2>
+        <div class="radio-group">
+          <label>
+            <input type="radio" name="chart-type" value="bar" checked />
+            Graphique en Bâtonnet
+          </label>
+          <label>
+            <input type="radio" name="chart-type" value="pie" />
+            Graphique en Camembert
+          </label>
+        </div>
+
+        <div class="column-selectors">
+          <h3>Sélection des Données</h3>
+          <div class="form-group">
+            <label for="x-column">Colonne pour l'axe X (ou étiquettes):</label>
+            <select id="x-column" disabled>
+              <option value="">Chargez un fichier Excel d'abord</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="y-column">Colonne pour l'axe Y (ou valeurs):</label>
+            <select id="y-column" disabled>
+              <option value="">Chargez un fichier Excel d'abord</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="chart-customization">
+          <h3>Personnalisation du Graphique</h3>
+
+          <div class="form-group checkbox-group">
+            <label>
+              <input type="checkbox" id="use-default-titles" />
+              Utiliser les Données par défaut
+            </label>
+            <small
+              >Si non coché, seuls les titres que vous spécifiez seront
+              affichés</small
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="chart-title">Titre du graphique:</label>
+            <input
+              type="text"
+              id="chart-title"
+              placeholder="Laissez vide pour aucun titre"
+            />
+          </div>
+
+          <div id="bar-chart-options">
+            <div class="form-group">
+              <label for="x-axis-title">Titre de l'axe X:</label>
+              <input
+                type="text"
+                id="x-axis-title"
+                placeholder="Laissez vide pour aucun titre"
+              />
+            </div>
+            <div class="form-group">
+              <label for="y-axis-title">Titre de l'axe Y:</label>
+              <input
+                type="text"
+                id="y-axis-title"
+                placeholder="Laissez vide pour aucun titre"
+              />
+            </div>
+          </div>
+
+          <div id="pie-chart-options" style="display: none">
+            <h4>Options du Graphique Circulaire</h4>
+            <div class="form-group">
+              <label for="min-percent">Seuil minimum pour affichage (%):</label>
+              <input
+                type="number"
+                id="min-percent"
+                value="2.0"
+                min="0"
+                max="100"
+                step="0.1"
+              />
+              <small
+                >Les valeurs inférieures seront regroupées dans "Autres"</small
+              >
+            </div>
+            <div class="form-group checkbox-group">
+              <label>
+                <input type="checkbox" id="show-legend" checked />
+                Afficher la légende
+              </label>
+            </div>
+            <div class="form-group checkbox-group">
+              <label>
+                <input type="checkbox" id="show-percentages" checked />
+                Afficher les pourcentages
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <button id="generate-btn">Générer le Graphique</button>
+      </div>
+
+      <div class="chart-container">
+        <div id="status-message"></div>
+        <div id="chart-display"></div>
+      </div>
+    </div>
+
+    <py-script src="script.py"></py-script>
+  </body>
+</html>
