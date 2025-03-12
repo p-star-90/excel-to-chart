@@ -97,7 +97,3 @@ Les contributions sont les bienvenues ! 
 - La communauté open-source ❤️
 
 ---
-
-*Développé avec passion par [Aurélien]*
-
-```
