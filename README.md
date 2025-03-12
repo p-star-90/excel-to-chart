@@ -28,7 +28,7 @@ Un projet open-source permettant de générer des graphiques interactifs à part
 
 - **Frontend**: 
 
-  - HTML5 / CSS3 (avec [Bootstrap](https://getbootstrap.com/) ou [Tailwind](https://tailwindcss.com/))
+  - HTML5 / CSS3
 
   - [PyScript](https://pyscript.net/) (pour exécuter du Python dans le navigateur)
 
