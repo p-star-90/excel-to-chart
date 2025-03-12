@@ -90,7 +90,7 @@ Les contributions sont les bienvenues ! 
 
 ## 🙏 Remerciements
 
-- L'équipe [PyScript](https://pyscript.net/) pour cet outil révolutionnaire.
+- L'équipe [PyScript](https://pyscript.net/) pour cet librairie HTML révolutionnaire.
 
 - Les librairies **Pandas** et **Matplotlib** pour leur flexibilité.
 
